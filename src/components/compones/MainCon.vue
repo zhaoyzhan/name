@@ -1,6 +1,6 @@
 <template>
   <div class="con-header">
-    <h1 class="head-title">头部</h1>
+    <h1 class="head-title">内容部分</h1>
     <slot name="h-left" class="h-left"></slot>
     <slot name="h-right" class="h-right"></slot>
   </div>

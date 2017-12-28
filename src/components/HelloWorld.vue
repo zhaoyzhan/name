@@ -13,11 +13,23 @@
         <li><a>共<i>{{all}}</i>页</a></li>
       </ul> -->
     <!-- </div> -->
+    <!-- <Header>
+      <span slot="h-left" class="h-left">左侧点击按钮</span>
+      <span slot="h-right" class="h-right">右侧点击按钮</span>
+    </Header> -->
+    <component v-bind:is="choseShow">
+      <span slot="h-left" class="h-left">左侧点击按钮</span>
+      <span slot="h-right" class="h-right">右侧点击按钮</span>
+    </component>
+    <button v-for="(item, index) in selectList" :key="index" @click="chose(item)">点击切换{{item}}</button>
   </div>
 </template>
 
 <script>
 // import DiGui from '@/api/digui'
+import Header from './compones/Heeaders'
+import Bottom from './compones/Bottom'
+import MainCon from './compones/MainCon'
 export default {
   name: 'HelloWorld',
   data () {
@@ -38,6 +50,8 @@ export default {
         //   ]
         // }
       // ]
+      selectList: ['Header', 'Bottom', 'MainCon'],
+      choseShow: 'MainCon'
     }
   },
   methods: {
@@ -64,6 +78,9 @@ export default {
     //     return num * this.fun(num - 1)
     //   }
     // }
+    chose (item) {
+      this.choseShow = item
+    }
   },
   computed: {
     // indexs: function () {
@@ -90,13 +107,18 @@ export default {
     //   }
     //   return ar
     // }
+  },
+  components: {
+    Header,
+    Bottom,
+    MainCon
   }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.box {
+/*.box {
   text-align: center;
   line-height: 200px;
   width: 400px;
@@ -145,5 +167,5 @@ li{
   color: #d44950;
   margin: 0px 4px;
   font-size: 12px;
-}
+}*/
 </style>
